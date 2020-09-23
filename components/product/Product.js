@@ -1,14 +1,15 @@
-import React from 'react';
-import { View, Text, SafeAreaView, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useContext } from 'react';
+import { View, Text, SafeAreaView, TouchableOpacity, StyleSheet, Button } from 'react-native';
+import { CartContext } from '../../context/CartContext';
 
 
-
-const Product = ({ name, price }) => {
-
+const Product = ({ product }) => {
+    const { addProduct } = useContext(CartContext);
     return(
         <View style={styles.item}>
-            <Text style={styles.title}>{name}</Text>
-            <Text style={styles.price}>{price}</Text>
+            <Text style={styles.title}>{product.name}</Text>
+            <Text style={styles.price}>{product.price}</Text>
+            <Button title="Click" style={styles.button} onPress={ addProduct(product) } />
         </View>
     )
 };
@@ -25,6 +26,10 @@ const styles = StyleSheet.create({
     },
     price: {
         fontSize: 18,
+    },
+    button: {
+        marginLeft: 90
+
     }
 });
 

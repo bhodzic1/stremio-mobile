@@ -9,7 +9,7 @@ import {
   CartScreen,
   SignOutScreen
 } from './screens';
-import Product from './components/product/Product';
+import { CartProvider } from './context/CartContext';
 
 const DrawerNavigator = createDrawerNavigator({
   ProfileScreen: {
@@ -20,4 +20,14 @@ const DrawerNavigator = createDrawerNavigator({
   SignOutScreen
 });
 
-export default createAppContainer(DrawerNavigator);
+const AppContainer = createAppContainer(DrawerNavigator);
+
+const App = () => {
+  return (
+    <CartProvider>
+      <AppContainer />
+    </CartProvider>
+  )
+}
+
+export default App;

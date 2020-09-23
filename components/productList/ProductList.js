@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
 import { FontAwesome5 } from "@expo/vector-icons";
 import Product from '../product/Product';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const listOfProducts = [
     {
@@ -44,7 +45,7 @@ const listOfProducts = [
 
 const ProductList = ({ navigation, name }) => {
     const renderItem = ({ item }) => (
-        <Product name={ item.name } price={ item.price } />
+        <Product product={ item } />
     );
 
     return (
@@ -58,13 +59,14 @@ const ProductList = ({ navigation, name }) => {
                 <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
                     <Text style={styles.text}>{name} portoriko</Text>
                 </View>
-                <View>
+                <ScrollView>
                     <FlatList
                         data={listOfProducts}
                         renderItem={renderItem}
                         keyExtractor={item => item.id}
+                        
                     />
-                </View>
+                </ScrollView>
             </SafeAreaView>
         </View>
     )
