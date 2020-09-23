@@ -6,13 +6,22 @@ export const CartProvider = (props) => {
     const [products, setProducts] = useState([]);
 
     const addProduct = (product) => {
-        products.push(product);
+        console.log(product)
+        if (!products.find(item => item.id === product.id)) {
+            setProducts([...products, product])
+        } 
+        console.log(products);
+    }
+
+    const clearCart = () => {
+        setProducts([]);
     }
 
     const cartContextValues = {
         products,
         setProducts,
-        addProduct
+        addProduct,
+        clearCart
     }
 
     return (

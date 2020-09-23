@@ -10,6 +10,7 @@ import {
   SignOutScreen
 } from './screens';
 import { CartProvider } from './context/CartContext';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const DrawerNavigator = createDrawerNavigator({
   ProfileScreen: {
@@ -24,9 +25,11 @@ const AppContainer = createAppContainer(DrawerNavigator);
 
 const App = () => {
   return (
-    <CartProvider>
-      <AppContainer />
-    </CartProvider>
+    <SafeAreaProvider>
+      <CartProvider>
+        <AppContainer />
+      </CartProvider>
+    </SafeAreaProvider>
   )
 }
 

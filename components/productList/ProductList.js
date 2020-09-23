@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, Text, SafeAreaView, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
+import React, { useContext } from 'react';
+import { View, Text, SafeAreaView, TouchableOpacity, StyleSheet, FlatList, Button } from 'react-native';
 import { FontAwesome5 } from "@expo/vector-icons";
 import Product from '../product/Product';
-import { ScrollView } from 'react-native-gesture-handler';
+
 
 const listOfProducts = [
     {
@@ -44,13 +44,15 @@ const listOfProducts = [
 ];
 
 const ProductList = ({ navigation, name }) => {
+    
     const renderItem = ({ item }) => (
-        <Product product={ item } />
+        <Product key={ item.id } product={ item } />
     );
 
     return (
         <View style={styles.container}>
             <SafeAreaView style={{ flex: 1 }}>
+                
                 <TouchableOpacity
                     style={{ alignItems: "flex-end", margin: 16 }}
                     onPress={navigation.openDrawer} >
@@ -59,14 +61,15 @@ const ProductList = ({ navigation, name }) => {
                 <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
                     <Text style={styles.text}>{name} portoriko</Text>
                 </View>
-                <ScrollView>
+                <SafeAreaView>
                     <FlatList
                         data={listOfProducts}
                         renderItem={renderItem}
                         keyExtractor={item => item.id}
                         
                     />
-                </ScrollView>
+                </SafeAreaView>
+                
             </SafeAreaView>
         </View>
     )

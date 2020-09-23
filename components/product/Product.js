@@ -9,7 +9,7 @@ const Product = ({ product }) => {
         <View style={styles.item}>
             <Text style={styles.title}>{product.name}</Text>
             <Text style={styles.price}>{product.price}</Text>
-            <Button title="Click" style={styles.button} onPress={ addProduct(product) } />
+            <Button title="Click" style={styles.button} onPress={() => addProduct(product)} />
         </View>
     )
 };
