@@ -9,9 +9,12 @@ import {
   CartScreen,
   SignOutScreen
 } from './screens';
+import Product from './components/product/Product';
 
 const DrawerNavigator = createDrawerNavigator({
-  ProfileScreen,
+  ProfileScreen: {
+    screen: ProfileScreen
+  },
   ListScreen,
   CartScreen,
   SignOutScreen
