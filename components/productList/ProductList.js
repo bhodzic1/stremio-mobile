@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity, StyleSheet, FlatList, Button } from 'react-native';
-import { FontAwesome5 } from "@expo/vector-icons";
 import Product from '../product/Product';
 
 
@@ -43,33 +42,25 @@ const listOfProducts = [
     }
 ];
 
-const ProductList = ({ navigation, name }) => {
+const ProductList = ({ navigation }) => {
     
+    useEffect(() => {
+        
+    }, [])
+
     const renderItem = ({ item }) => (
-        <Product key={ item.id } product={ item } />
+        <Product key={ item.id } product={ item } navigation={ navigation } />
     );
 
     return (
         <View style={styles.container}>
             <SafeAreaView style={{ flex: 1 }}>
-                
-                <TouchableOpacity
-                    style={{ alignItems: "flex-end", margin: 16 }}
-                    onPress={navigation.openDrawer} >
-                    <FontAwesome5 name="bars" size={24} style={styles.menu}></FontAwesome5>
-                </TouchableOpacity>
-                <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-                    <Text style={styles.text}>{name} portoriko</Text>
-                </View>
-                <SafeAreaView>
-                    <FlatList
-                        data={listOfProducts}
-                        renderItem={renderItem}
-                        keyExtractor={item => item.id}
-                        
-                    />
-                </SafeAreaView>
-                
+                <FlatList
+                    horizontal
+                    data={listOfProducts}
+                    renderItem={renderItem}
+                    keyExtractor={item => item.id}
+                />
             </SafeAreaView>
         </View>
     )

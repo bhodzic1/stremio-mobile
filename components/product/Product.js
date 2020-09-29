@@ -3,13 +3,14 @@ import { View, Text, SafeAreaView, TouchableOpacity, StyleSheet, Button } from '
 import { CartContext } from '../../context/CartContext';
 
 
-const Product = ({ product }) => {
+const Product = ({ product, navigation }) => {
     const { addProduct } = useContext(CartContext);
     return(
         <View style={styles.item}>
             <Text style={styles.title}>{product.name}</Text>
             <Text style={styles.price}>{product.price}</Text>
             <Button title="Click" style={styles.button} onPress={() => addProduct(product)} />
+            <Button title="Details" style={styles.button} onPress={() => navigation.navigate('Details', product)} />
         </View>
     )
 };
