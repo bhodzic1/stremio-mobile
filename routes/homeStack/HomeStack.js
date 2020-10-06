@@ -5,11 +5,14 @@ import ProductDetails from '../../screens/ProductDetails';
 import Header from '../../shared/Header';
 import SearchScreen from '../../screens/SearchScreen';
 import SearchHeader from '../../shared/SearchHeader';
+import HomeScreen from '../../screens/HomeScreen';
+import MovieCardDetails from '../../components/card/MovieCardDetails';
+import DetailsHeader from '../../shared/DetailsHeader';
 
 
 const screens = {
     Home: {
-        screen: ListScreen,
+        screen: HomeScreen,
         navigationOptions: ({ navigation }) => {
             return { 
                 headerTitle: () => <Header navigation={ navigation } />
@@ -17,10 +20,10 @@ const screens = {
         }
     },
     Details: {
-        screen: ProductDetails,
+        screen: MovieCardDetails,
         navigationOptions: ({ navigation }) => {
             return {
-                headerTitle: () => <Header navigation={ navigation } />
+                headerTitle: () => <DetailsHeader navigation={ navigation } />
             }
         }
     },

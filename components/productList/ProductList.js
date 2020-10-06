@@ -41,13 +41,10 @@ const listOfProducts = [
         price: 12
     }
 ];
-
+//https://api.themoviedb.org/3/movie/top_rated?api_key=3adddc6450cee021ab92328ed2bbd662
 const ProductList = ({ navigation }) => {
     
-    useEffect(() => {
-        
-    }, [])
-
+    
     const renderItem = ({ item }) => (
         <Product key={ item.id } product={ item } navigation={ navigation } />
     );

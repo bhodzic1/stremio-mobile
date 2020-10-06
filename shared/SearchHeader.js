@@ -6,7 +6,8 @@ const SearchHeader = ({ navigation }) => {
 
     return (
         <View style={styles.header}>
-            <TextInput style={styles.headerText} placeholder="search"></TextInput>
+            
+            <TextInput style={styles.headerText} placeholder="search" onSubmitEditing={() => {console.log('hshs') }}></TextInput>
         </View>
     )
 }
