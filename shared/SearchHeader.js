@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import { FontAwesome5 } from "@expo/vector-icons";
+import { CartContext } from '../context/CartContext';
 
 const SearchHeader = ({ navigation }) => {
+    const { updateQuery } = useContext(CartContext);
+    const [query, setQuery] = useState("");
+
+    const handleChange = e => {
+        setQuery(e.target.value)
+    }
+
+    const handleSubmit = async e => {
+        updateQuery(query);
+    }
 
     return (
         <View style={styles.header}>
-            
-            <TextInput style={styles.headerText} placeholder="search" onSubmitEditing={() => {console.log('hshs') }}></TextInput>
+            <TextInput style={styles.headerText} placeholder="search" onChange={handleChange} onSubmitEditing={handleSubmit}></TextInput>
         </View>
     )
 }

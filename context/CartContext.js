@@ -5,6 +5,7 @@ export const CartContext = React.createContext();
 
 export const CartProvider = (props) => {
     const [products, setProducts] = useState([]);
+    const [query, setQuery] = useState(""); 
 
     const addProduct = (product) => {
         if (!products.find(item => item.id === product.id)) {
@@ -20,7 +21,14 @@ export const CartProvider = (props) => {
         return products.length;
     }
 
+    const updateQuery = (query) => {
+        setQuery(query);
+    }
+
+
     const cartContextValues = {
+        query,
+        updateQuery,
         products,
         setProducts,
         addProduct,

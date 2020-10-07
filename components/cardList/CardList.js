@@ -3,23 +3,24 @@ import { View, FlatList, Text, StyleSheet, TouchableOpacity } from 'react-native
 import MovieCard from '../card/MovieCard';
 
 
-const CardList = ({ navigation, data }) => {
+const CardList = ({ navigation, data, title }) => {
 
     const renderItem = ({ item }) => (
         <TouchableOpacity onPress={() => navigation.navigate('Details', item)}>
             <MovieCard key={item.id} movie={ item } />
         </TouchableOpacity>
     );
+    
 
     return (
         <View>
-            <Text style={ styles.title }>TOP MOVIES</Text>
+            <Text style={styles.title}>{ title }</Text>
             <FlatList
             horizontal
             data={ data }
             renderItem={ renderItem }
             keyExtractor={ item => item.id.toString() }
-            onTouch
+            
             />
         </View>
     )

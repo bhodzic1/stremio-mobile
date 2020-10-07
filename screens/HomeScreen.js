@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
-import ProductList from '../components/productList/ProductList';
 import CardList from '../components/cardList/CardList';
 
 
@@ -19,7 +18,7 @@ const HomeScreen = ({ navigation }) => {
     return (
         <View>
             <View>
-                <CardList navigation={ navigation } data={ topMovies } />
+                <CardList navigation={ navigation } data={ topMovies } title="TOP MOVIES" />
             </View>
         </View>
     )
