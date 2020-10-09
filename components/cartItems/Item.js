@@ -6,8 +6,8 @@ const Item = ({ product }) => {
 
     return (
         <View style={ styles.item }>
-            <Text style={styles.title}>{product.name}</Text>
-            <Text style={styles.price}>{product.price}</Text>
+            <Text style={styles.title}>{product.id}</Text>
+            <Text style={styles.price}>{product.title}</Text>
         </View>
     )
 }

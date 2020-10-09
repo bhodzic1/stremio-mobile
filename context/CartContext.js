@@ -13,6 +13,10 @@ export const CartProvider = (props) => {
         } 
     }
 
+    const removeProduct = (product) => {
+        setProducts([...products.filter(item => item.id !== product.id)])
+    }
+
     const clearCart = () => {
         setProducts([]);
     }
@@ -32,6 +36,7 @@ export const CartProvider = (props) => {
         products,
         setProducts,
         addProduct,
+        removeProduct,
         cartLength,
         clearCart
     }

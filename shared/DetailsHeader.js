@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Feather } from "@expo/vector-icons";
+import { CartContext } from '../context/CartContext';
 
 const DetailsHeader = ({ navigation }) => {
+    const { addProduct, products, removeProduct } = useContext(CartContext);
+
+    const addToMyLibrary = () => {
+        addProduct(navigation.state.params);
+    }
+
+    const removeFromMyLibrary = () => {
+        removeProduct(navigation.state.params);
+    }
+
+    const isInMyLibrary = (id) => {
+        //let id = navigation.getParam('id');
+        return !!products.find(item => item.id === id);
+    }
 
     return (
         <View>
@@ -12,9 +27,16 @@ const DetailsHeader = ({ navigation }) => {
                     <TouchableOpacity onPress={() => navigation.navigate("SearchScreen")}>
                         <Feather name="share-2" size={24} style={styles.search}></Feather>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate("SearchScreen")}>
+                    { !isInMyLibrary(navigation.getParam('id')) &&
+                    <TouchableOpacity onPress={addToMyLibrary}>
                         <Feather name="folder-plus" size={24} style={styles.search}></Feather>
                     </TouchableOpacity>
+                    }
+                    { isInMyLibrary(navigation.getParam('id')) && 
+                    <TouchableOpacity onPress={removeFromMyLibrary}>
+                        <Feather name="folder-minus" size={24} style={styles.search}></Feather>
+                    </TouchableOpacity>
+                    }
                 </View>
             </View>
         </View>
