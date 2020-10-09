@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "food-ordering",
-    "slug": "food-ordering",
+    "name": "stremio-mobile",
+    "slug": "stremio-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
